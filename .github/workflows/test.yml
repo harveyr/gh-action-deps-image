@@ -3,7 +3,6 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: 'false'
     steps:
     - uses: actions/checkout@v1
 
@@ -23,12 +22,13 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         patterns: src/**.ts
 
-    - run: npm test
+    # - run: npm test
 
     - uses: ./
 
   publish:
     if: startsWith( github.ref, 'refs/heads/versions/' )
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - run: "echo yep"
