@@ -33,6 +33,8 @@ jobs:
     # needs: test
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
+
       - run: git checkout -b releases/${BRANCH/refs\/heads\/versions\//}
         env:
           BRANCH: ${{ github.ref }}
