@@ -1,0 +1,6 @@
+name: Publish this action
+description: Publish this action
+author: Harvey Rogers
+runs:
+  using: 'node12'
+  main: 'main.js'

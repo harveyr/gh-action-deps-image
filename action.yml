@@ -1,6 +1,6 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Deps Image'
+description: 'Build and publish docker images with deps installed'
+author: 'Harvey Rogers'
 inputs:
   myInput:              # change this
     description: 'input description here'
