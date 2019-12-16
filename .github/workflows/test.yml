@@ -38,6 +38,20 @@ jobs:
       - run: git checkout -b releases/${BRANCH/refs\/heads\/versions\//}
         env:
           BRANCH: ${{ github.ref }}
+
+      - run: |
+          npm ci
+          npm run build
+          git add -f lib
+          git diff --quiet && git diff --staged --quiet || git commit -m 'build'
+
+      - run: |
+          npm ci --only=production
+          git add -f node_modules
+          git diff --quiet && git diff --staged --quiet ||  git commit -m 'node_modules'
+
+      - run: git push origin HEAD
+
       # - run: npm ci
       # - run: npm run build
       # - run: npm run build
