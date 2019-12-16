@@ -3,6 +3,7 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: 'false'
     steps:
     - uses: actions/checkout@v1
 
@@ -22,13 +23,22 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         patterns: src/**.ts
 
+    # FIXME:
     # - run: npm test
 
-    - uses: ./
+    # - uses: ./
 
   publish:
     if: startsWith( github.ref, 'refs/heads/versions/' )
-    needs: test
+    # needs: test
     runs-on: ubuntu-latest
     steps:
-      - run: "echo yep"
+      - run: git checkout -b releases/${BRANCH/refs\/heads\/versions\//}
+        env:
+          BRANCH: ${{ github.ref }}
+      # - run: npm ci
+      # - run: npm run build
+      # - run: npm run build
+
+
+
