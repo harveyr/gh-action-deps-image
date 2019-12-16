@@ -29,5 +29,6 @@ jobs:
 
   publish:
     if: startsWith( github.ref, "refs/heads/versions/" )
+    runs-on: ubuntu-latest
     steps:
       - run: "echo yep"
