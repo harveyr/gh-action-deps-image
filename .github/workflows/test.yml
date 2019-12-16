@@ -3,6 +3,7 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: 'false'
     steps:
     - uses: actions/checkout@v1
 
@@ -25,3 +26,8 @@ jobs:
     - run: npm test
 
     - uses: ./
+
+  publish:
+    if: startsWith( github.ref, "refs/heads/versions/" )
+    steps:
+      - run: "echo yep"
