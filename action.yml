@@ -11,6 +11,11 @@ inputs:
   image_tag:
     description: Image tag
     required: true
+outputs:
+  image_url:
+    description: Full URL of the image
+  image_pulled:
+    description: Whether the image exists and was pulled successfully
 runs:
   using: node12
   main: dist/index.js
