@@ -29,33 +29,14 @@ jobs:
     # - uses: ./
 
   publish:
-    if: startsWith( github.ref, 'refs/heads/versions/' )
-    # needs: test
+    if: startsWith(github.ref, 'refs/heads/versions/')
     runs-on: ubuntu-latest
+    # needs: test
     steps:
       - uses: actions/checkout@v1
 
-      - run: git checkout -b releases/${BRANCH/refs\/heads\/versions\//}
-        env:
-          BRANCH: ${{ github.ref }}
-
-      - uses: ./.github/actions/publish
-
-      # - run: |
-      #     git config --local user.email "action@github.com"
-      #     git config --local user.name "GitHub Action"
-      #     npm ci
-      #     npm run build
-      #     git add -f lib
-      #     git diff --quiet && git diff --staged --quiet || git commit -m 'build'
-      #     npm ci --only=production
-      #     git add -f node_modules
-      #     git diff --quiet && git diff --staged --quiet ||  git commit -m 'node_modules'
-      #     git push origin HEAD
-
-      # - run: npm ci
-      # - run: npm run build
-      # - run: npm run build
-
-
-
+      - uses: harveyr/gh-action-publish@releases/v0
+        with:
+          # TODO: make dashes vs. underscores consistent
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
