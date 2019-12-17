@@ -13,11 +13,7 @@ async function pullImage(imageUrl: string): Promise<boolean> {
 }
 
 async function run(): Promise<void> {
-  const registryUrl = core.getInput('registry_url')
-  const imageName = core.getInput('image_name')
-  const imageTag = core.getInput('image_tag')
-
-  const imageUrl = `${registryUrl}/${imageName}:${imageTag}`
+  const imageUrl = core.getInput('image_url')
 
   const pullSuccess = await pullImage(imageUrl)
 

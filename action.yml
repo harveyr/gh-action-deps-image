@@ -2,18 +2,12 @@ name: 'Deps Image'
 description: 'Build and publish docker images with deps installed'
 author: 'Harvey Rogers'
 inputs:
-  registry_url:
-    description: Docker registry URL (everything up to the image name/tag)
-    required: true
-  image_name:
-    description: Name of the image (without the tag)
-    required: true
-  image_tag:
-    description: Image tag
+  image_url:
+    description: Full URL of the docker image
     required: true
 outputs:
   image_url:
-    description: Full URL of the image
+    description: Full URL of the image, as provided
   image_pulled:
     description: Whether the image exists and was pulled successfully
 runs:
