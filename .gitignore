@@ -1,9 +1,9 @@
 # Include the .npmrc in this repo.
 !.npmrc
 
-# we'll force-add the following in release branches:
 lib/
 node_modules/
+dist/
 
 
 __tests__/runner/*

@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     if: 'false'
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
 
     - run: npm ci
 
@@ -28,15 +28,19 @@ jobs:
 
     # - uses: ./
 
+    - run: npm run dist
+
+    - uses: harveyr/gh-action-publish@releases/v0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        force: true
+        dirs: dist
+
+
   publish:
     if: startsWith(github.ref, 'refs/heads/versions/')
     runs-on: ubuntu-latest
     # needs: test
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
-      - uses: harveyr/gh-action-publish@releases/v0
-        with:
-          # TODO: make dashes vs. underscores consistent
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
