@@ -3,12 +3,7 @@ import * as kit from '@harveyr/github-actions-kit'
 
 async function pullImage(imageUrl: string): Promise<boolean> {
   try {
-    await kit.execAndCapture('gcloud', [
-      'docker',
-      '--',
-      'pull',
-      imageUrl,
-    ])
+    await kit.execAndCapture('docker', ['pull', imageUrl])
   } catch (err) {
     console.log('Failed to pull image %s: %s', imageUrl, err)
     return false
