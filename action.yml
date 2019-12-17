@@ -2,9 +2,15 @@ name: 'Deps Image'
 description: 'Build and publish docker images with deps installed'
 author: 'Harvey Rogers'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  registry_url:
+    description: Docker registry URL (everything up to the image name/tag)
+    required: true
+  image_name:
+    description: Name of the image (without the tag)
+    required: true
+    image_tag:
+    description: Image tag
+    required: true
 runs:
   using: node12
   main: dist/index.js
