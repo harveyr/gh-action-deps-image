@@ -8,7 +8,7 @@ inputs:
   image_name:
     description: Name of the image (without the tag)
     required: true
-    image_tag:
+  image_tag:
     description: Image tag
     required: true
 runs:
